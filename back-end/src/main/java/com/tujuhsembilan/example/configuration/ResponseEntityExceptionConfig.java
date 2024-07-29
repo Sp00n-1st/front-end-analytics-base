@@ -32,6 +32,8 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import io.sentry.Sentry;
+
 @Slf4j
 @ControllerAdvice
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -223,6 +225,7 @@ public class ResponseEntityExceptionConfig extends ResponseEntityExceptionHandle
         .request(request)
         .build());
 
+    Sentry.captureException(ex);
     return ResponseEntity
         .status(out.status)
         .headers(out.headers)
@@ -231,6 +234,7 @@ public class ResponseEntityExceptionConfig extends ResponseEntityExceptionHandle
 
   @ExceptionHandler(Exception.class)
   protected ResponseEntity<Object> handleAnyOtherException(Exception ex, WebRequest request) {
+    Sentry.captureException(ex);
     return handleExceptionInternal(ex, null, null, null, request);
   }
 

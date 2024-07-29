@@ -34,8 +34,8 @@ management:
     web:
       exposure:
         include:
-        - loggers
-        - logfile
+          - loggers
+          - logfile
   endpoint:
     loggers:
       enabled: true
@@ -51,6 +51,14 @@ spring:
     ansi:
       enabled: always # Just console color, I'm lovin' it!
 
+#-----------------------------------
+--- # Sentry
+#-----------------------------------
+
+sentry:
+  dsn: 
+  environment: production
+  tracesSampleRate: 1.0
 # # -----------------------------------
 # --- #
 # # -----------------------------------
