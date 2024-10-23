@@ -56,7 +56,7 @@ spring:
 #-----------------------------------
 
 sentry:
-  dsn: 
+  dsn: [YOUR-DSN]
   environment: production
   tracesSampleRate: 1.0
 # # -----------------------------------
